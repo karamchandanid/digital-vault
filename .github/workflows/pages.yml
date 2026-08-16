@@ -1,0 +1,37 @@
+# Publishes splash/ to GitHub Pages so VITE_SPLASH_URL can point at it.
+# Editing splash/index.html on master is all it takes to update the splash —
+# no new APK, no manual deploy.
+name: Deploy splash to Pages
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'splash/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish; queue at most one more behind it.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: splash
+      - id: deployment
+        uses: actions/deploy-pages@v4
