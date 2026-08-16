@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <!-- Placeholder for now; drop this line once there is real content to find. -->
+    <meta name="robots" content="noindex" />
+    <title>Digital Vault</title>
+
+    <!--
+      ===================================================================
+      DIGITAL VAULT — HOME
+      ===================================================================
+      Served at the site root: https://<host>/
+      The app's remote splash lives beside it at /splash (site/splash/).
+
+      This is a PLACEHOLDER. What goes here eventually is a plain
+      description of the app — what it holds, who it hands over to, and
+      why it is safe. The marked block below is where that copy lands.
+
+      Unlike the splash, this page is not on a 1.5s budget, so it may
+      grow images and more markup. Keep it self-contained anyway: it is
+      one file on GitHub Pages, and staying that way keeps it easy to
+      edit without a build step.
+      ===================================================================
+    -->
+
+    <style>
+      /* Palette mirrors the app's dark theme tokens (src/index.css §11). */
+      :root {
+        --ink: #0b0d11;
+        --panel: #14171d;
+        --text: #f4f5f9;
+        --text-muted: #a8afbe;
+        --violet: #6f61ef;
+        --violet-deep: #4b3fc9;
+        --cyan: #4dd6e8;
+        --hairline: rgba(244, 245, 249, 0.08);
+      }
+      /* The app is dark by default; light only if the device asks for it. */
+      @media (prefers-color-scheme: light) {
+        :root {
+          --ink: #f7f8fb;
+          --panel: #ffffff;
+          --text: #14171d;
+          --text-muted: #5a6273;
+          --hairline: rgba(20, 23, 29, 0.1);
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+      }
+      body {
+        /* dvh so mobile browser chrome doesn't push the card off-centre. */
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 48px 24px;
+        background: var(--ink);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        text-align: center;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* Ambient wash — matches the app's two blurred blobs, cheaply. */
+      body::before {
+        content: '';
+        position: fixed;
+        inset: -20%;
+        background:
+          radial-gradient(38rem 28rem at 15% 0%, rgba(111, 97, 239, 0.28), transparent 60%),
+          radial-gradient(32rem 24rem at 95% 15%, rgba(77, 214, 232, 0.16), transparent 60%);
+        filter: blur(30px);
+        pointer-events: none;
+      }
+
+      main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        max-width: 34rem;
+      }
+
+      /* The tile is drawn inside the SVG; this only sizes it and casts the
+         shadow. Same mark as the splash — keep the two in step. */
+      .mark {
+        width: 96px;
+        height: 96px;
+        border-radius: 25px;
+        box-shadow: 0 18px 44px -16px rgba(75, 63, 201, 0.9);
+      }
+      .mark svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(1.75rem, 7vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .tagline {
+        margin: 0;
+        font-size: 1.05rem;
+        line-height: 1.55;
+        color: var(--text-muted);
+        max-width: 28rem;
+      }
+
+      .placeholder {
+        margin: 8px 0 0;
+        padding: 14px 20px;
+        border: 1px solid var(--hairline);
+        border-radius: 14px;
+        background: var(--panel);
+        font-size: 0.88rem;
+        line-height: 1.5;
+        color: var(--text-muted);
+      }
+      .placeholder strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main>
+      <div class="mark" aria-hidden="true">
+        <!-- The app icon (assets/icon/source.png) redrawn as vector. Kept
+             identical to site/splash/index.html so the two pages match. -->
+        <svg viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tile" x1="8" y1="4" x2="88" y2="92" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#7b52f5" />
+              <stop offset="0.55" stop-color="#4b3fc9" />
+              <stop offset="1" stop-color="#2a1f7a" />
+            </linearGradient>
+            <radialGradient id="sheen" cx="0" cy="0" r="1"
+              gradientTransform="translate(84 10) rotate(128) scale(62)"
+              gradientUnits="userSpaceOnUse">
+              <stop stop-color="#38bdf8" stop-opacity="0.85" />
+              <stop offset="1" stop-color="#38bdf8" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="steel" x1="14" y1="20" x2="52" y2="78" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffffff" />
+              <stop offset="1" stop-color="#d7ddf0" />
+            </linearGradient>
+            <linearGradient id="door" x1="58" y1="16" x2="86" y2="82" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ffffff" />
+              <stop offset="1" stop-color="#cfd6ea" />
+            </linearGradient>
+            <linearGradient id="folder" x1="20" y1="52" x2="46" y2="72" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#4dd6e8" />
+              <stop offset="1" stop-color="#2f8ce0" />
+            </linearGradient>
+            <linearGradient id="dial" x1="62" y1="40" x2="80" y2="58" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#5ee7f5" />
+              <stop offset="1" stop-color="#2563eb" />
+            </linearGradient>
+          </defs>
+
+          <!-- Tile -->
+          <rect width="96" height="96" rx="26" fill="url(#tile)" />
+          <rect width="96" height="96" rx="26" fill="url(#sheen)" />
+
+          <!-- Safe body, with the recessed interior -->
+          <rect x="12" y="21" width="43" height="55" rx="8" fill="url(#steel)" />
+          <rect x="17.5" y="26.5" width="32" height="44" rx="5" fill="#141a3a" />
+
+          <!-- Records inside: a stacked sheet behind, a document in front -->
+          <rect x="26" y="31" width="17" height="21" rx="2" fill="#3f7ff0" />
+          <rect x="22.5" y="34" width="19" height="21" rx="2" fill="#f4f7ff" />
+          <g fill="#5b9bf5">
+            <rect x="25.5" y="38.5" width="13" height="1.7" rx="0.85" />
+            <rect x="25.5" y="42.5" width="13" height="1.7" rx="0.85" />
+            <rect x="25.5" y="46.5" width="9" height="1.7" rx="0.85" />
+          </g>
+
+          <!-- Folder holding it all together -->
+          <path
+            d="M20 55.5a2 2 0 0 1 2-2h6.6l2.6-2.6H45a2 2 0 0 1 2 2v14.6a2 2 0 0 1-2 2H22a2 2 0 0 1-2-2V55.5Z"
+            fill="url(#folder)"
+          />
+
+          <!-- The household, cradled -->
+          <g fill="#f4f7ff">
+            <circle cx="28.6" cy="57.8" r="2.9" />
+            <path d="M23.9 66.4c0-2.6 2.1-4.7 4.7-4.7s4.7 2.1 4.7 4.7H23.9Z" />
+            <circle cx="38.4" cy="57.8" r="2.9" />
+            <path d="M33.7 66.4c0-2.6 2.1-4.7 4.7-4.7s4.7 2.1 4.7 4.7H33.7Z" />
+          </g>
+          <g fill="#4dd6e8">
+            <circle cx="33.5" cy="61.4" r="2.3" />
+            <path d="M29.8 67.8c0-2 1.7-3.7 3.7-3.7s3.7 1.7 3.7 3.7h-7.4Z" />
+          </g>
+          <!-- Two open hands beneath them. -->
+          <path
+            d="M22.6 62.6c-.9 2.9-.4 5.3 1.6 7.2M44.4 62.6c.9 2.9.4 5.3-1.6 7.2"
+            stroke="#f4f7ff" stroke-width="2.4" stroke-linecap="round" fill="none"
+          />
+
+          <!-- Hinges and the open door -->
+          <g fill="#c3cbe4">
+            <rect x="52" y="30" width="8" height="9" rx="2.5" />
+            <rect x="52" y="58" width="8" height="9" rx="2.5" />
+          </g>
+          <rect x="58" y="17" width="26" height="63" rx="8" fill="url(#door)" />
+
+          <!-- Combination dial -->
+          <circle cx="71" cy="48.5" r="10" fill="url(#dial)" />
+          <circle cx="71" cy="48.5" r="7" fill="#12235c" />
+          <g stroke="#7ff0ff" stroke-width="1.3" stroke-linecap="round">
+            <path d="M71 39.6v2.4M71 55v2.4M62.1 48.5h2.4M77.5 48.5h2.4" />
+          </g>
+          <circle cx="71" cy="48.5" r="3.4" fill="#eef2ff" />
+        </svg>
+      </div>
+
+      <!-- ⬇ REPLACE: the real description of the app goes here. -->
+      <h1>Digital Vault</h1>
+      <p class="tagline">
+        Your household's financial records, kept in one place — and ready to hand over.
+      </p>
+
+      <p class="placeholder">
+        <strong>Placeholder.</strong> A fuller description of the app — what it holds, who it hands
+        over to, and how it stays private — is coming here.
+      </p>
+      <!-- ⬆ REPLACE -->
+    </main>
+  </body>
+</html>
